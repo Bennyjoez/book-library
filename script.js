@@ -1,5 +1,7 @@
 let myLibrary = [];
 const booksDisplay = document.querySelector('.books');
+const addBooksBtn = document.querySelector('.addbook');
+addBooksBtn.addEventListener('click', showForm)
 
 function Book (title, author, pages, readStatus) {
     this.title = title;
@@ -25,9 +27,6 @@ function createBook (title, author, pages, readStatus) {
     myLibrary.push(newBook);
 }
 
-createBook('Ben codes', 'Ben', 40, true)
-createBook('Dorothy meets Ben', 'Ben', 20, false)
-createBook('Dday', 'Dorothy', 30, true)
 
 function displayBooks (myLibrary) {
     myLibrary.forEach(book => {
@@ -47,5 +46,12 @@ function displayBooks (myLibrary) {
         booksDisplay.innerHTML += bookHtml;
     });
 } 
+
+function showForm() {
+    console.log('calls')
+}
+createBook('Ben codes', 'Ben', 40, true)
+createBook('Dorothy meets Ben', 'Ben', 20, false)
+createBook('Dday', 'Dorothy', 30, true)
 
 displayBooks(myLibrary)
