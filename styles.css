@@ -60,6 +60,7 @@ body {
     width: 60%;
     max-width: 500px;
     margin: 20px auto;
+    display: none;
 }
 form {
     display: flex;
@@ -84,3 +85,8 @@ form input:not(input[type='radio']) {
 fieldset *:not(fieldset *:first-child){
     width: 25%;
 }
+
+/* display form */
+.display {
+    display: block;
+} 
