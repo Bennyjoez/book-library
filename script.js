@@ -1,6 +1,7 @@
 let myLibrary = [];
 const booksDisplay = document.querySelector('.books');
 const addBooksBtn = document.querySelector('.addbook');
+const form = document.querySelector('.form');
 addBooksBtn.addEventListener('click', showForm)
 
 function Book (title, author, pages, readStatus) {
@@ -48,7 +49,12 @@ function displayBooks (myLibrary) {
 } 
 
 function showForm() {
-    console.log('calls')
+    form.classList.toggle('display'); 
+    if(addBooksBtn.textContent == 'NEW BOOK') {
+        addBooksBtn.textContent = 'ADD BOOK';
+    } else {
+        addBooksBtn.textContent = 'NEW BOOK'
+    }
 }
 createBook('Ben codes', 'Ben', 40, true)
 createBook('Dorothy meets Ben', 'Ben', 20, false)
