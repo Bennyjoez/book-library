@@ -80,7 +80,6 @@ form input:not(input[type='radio']) {
     padding-left: 10px;
     font-weight: normal;
     font-size: 1rem;
-    cursor: pointer;
 }
 fieldset *:not(fieldset *:first-child){
     width: 25%;
