@@ -55,3 +55,32 @@ body {
     padding: 12px;
     box-shadow: 0 0 3px 2px brown;
 }
+
+.form {
+    width: 60%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+form * {
+    margin-bottom: 10px;
+    width: 100%;
+    font-weight: bold;
+}
+form input:not(input[type='radio']) {
+    border: none;
+    height: 25px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: inset 5px 1px gray;
+    padding-left: 10px;
+    font-weight: normal;
+    font-size: 1rem;
+    cursor: pointer;
+}
+fieldset *:not(fieldset *:first-child){
+    width: 25%;
+}
