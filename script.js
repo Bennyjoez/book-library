@@ -2,7 +2,10 @@ let myLibrary = [];
 const booksDisplay = document.querySelector('.books');
 const addBooksBtn = document.querySelector('.addbook');
 const form = document.querySelector('.form');
-addBooksBtn.addEventListener('click', showForm)
+
+
+addBooksBtn.addEventListener('click', showForm);
+form.addEventListener('change', grabData)
 
 function Book (title, author, pages, readStatus) {
     this.title = title;
@@ -26,10 +29,13 @@ function createBook (title, author, pages, readStatus) {
     } 
     const newBook = new Book(title, author, pages, readStatus);
     myLibrary.push(newBook);
+    displayBooks(myLibrary);
+    console.log(title, author, pages, readStatus)
 }
 
 
 function displayBooks (myLibrary) {
+    console.log(myLibrary);
     myLibrary.forEach(book => {
         let readOrNot;
         if(book.readStatus) {
@@ -56,8 +62,22 @@ function showForm() {
         addBooksBtn.textContent = 'NEW BOOK'
     }
 }
-createBook('Ben codes', 'Ben', 40, true)
-createBook('Dorothy meets Ben', 'Ben', 20, false)
-createBook('Dday', 'Dorothy', 30, true)
 
-displayBooks(myLibrary)
+function grabData(e) {
+    const bookTitle = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const readStatus = document.querySelector('#yes').checked;
+    console.log(readStatus);
+
+    if(bookTitle != '' || author != '' || pages != null || pages != '' || readStatus == true || readStatus == false) {
+        createBook(bookTitle, author, pages, readStatus);
+    } else {
+        console.log('error');
+    }
+
+}
+
+// createBook('Ben codes', 'Ben', 40, true)
+// createBook('Dorothy meets Ben', 'Ben', 20, false)
+// createBook('Dday', 'Dorothy', 30, true)

@@ -36,22 +36,22 @@
             <h2>Book Details</h2>
             <div class="form-item">
                 <label for="title">Book Title</label>
-                <input type="text" id="title">
+                <input type="text" id="title" required>
             </div>
             <div class="form-item">
                 <label for="author">Book's Author</label>
-                <input type="text" id="author">
+                <input type="text" id="author" required>
             </div>
             <div class="form-item">
                 <label for="pages">Number of pages</label>
-                <input type="number" id="pages" min="1">
+                <input type="number" id="pages" min="1" required>
             </div>
             <div class="form-item">
                 <fieldset>
                     <legend>Have you read this book?</legend>
-                    <input type="radio" id="yes" name="readstatus">
+                    <input type="radio" id="yes" name="readstatus" value="Yes" required>
                     <label for="yes">Yes</label>
-                    <input type="radio" id="no" name="readstatus">
+                    <input type="radio" id="no" name="readstatus" value="No" required>
                     <label for="no">No</label>
                 </fieldset>
             </div>
