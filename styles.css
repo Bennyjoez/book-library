@@ -36,6 +36,7 @@ body {
     width: minmax(500px, 700px);
     padding: 20px;
     margin-bottom: 10px;
+    text-transform: capitalize;
 }
 .book-item h1 {
     font-size: calc(0.4rem + 1vw);
