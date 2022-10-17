@@ -109,7 +109,7 @@ function displayBooks (myLibrary) {
                     </div>
                 </div>
                 `
-            } else if(readOrNot == 'Not Read'){
+            } else if(readOrNot == 'Not Read!'){
                 bookHtml = `
                             <div class="book-item">
                                 <h2 class="title">${book.title}</h2>
