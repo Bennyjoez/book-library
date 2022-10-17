@@ -12,7 +12,7 @@ function Book (title, author, pages, readStatus, dataIdentifier) {
     this.author = author; 
     this.pages = pages;
     this.readStatus = readStatus;
-    this.dataIdentifier = dataIdentifier; /*Check this*/
+    this.dataIdentifier = dataIdentifier;
     this.info = function () {
         if(this.readStatus) {
             return `The book "${this.title}" by ${this.author} is ${this.pages} pages long and you have read it.`
