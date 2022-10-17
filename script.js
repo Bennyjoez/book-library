@@ -4,14 +4,16 @@ const addBooksBtn = document.querySelector('.addbook');
 const form = document.querySelector('.form');
 const finishedReading = document.querySelector('.finished');
 
+booksDisplay.addEventListener('click', clearTile);
 
 addBooksBtn.addEventListener('click', showOrSubmit);
 
-function Book (title, author, pages, readStatus) {
+function Book (title, author, pages, readStatus, dataIdentifier) {
     this.title = title;
     this.author = author; 
     this.pages = pages;
     this.readStatus = readStatus;
+    this.dataIdentifier = dataIdentifier; /*Check this*/
     this.info = function () {
         if(this.readStatus) {
             return `The book "${this.title}" by ${this.author} is ${this.pages} pages long and you have read it.`
@@ -76,7 +78,9 @@ function createBook (title, author, pages, readStatus) {
     if(isNaN(pages)) {
         alert('The pages should be a number');
     } 
-    const newBook = new Book(title, author, pages, readStatus);
+    let length = myLibrary.length;
+    let dataIdentifier = length += 1
+    const newBook = new Book(title, author, pages, readStatus, dataIdentifier);
     myLibrary.push(newBook);
 
     displayBooks(myLibrary);
@@ -97,7 +101,7 @@ function displayBooks (myLibrary) {
             
             if (readOrNot == 'Already read') {
                 bookHtml = `
-                <div class="book-item">
+                <div class="book-item" data-identifier="${book.dataIdentifier}">
                     <h2 class="title">${book.title}</h2>
                     <p class="author">${book.author}</p>
                     <p class="pageNo">${book.pages}</p>
@@ -109,7 +113,7 @@ function displayBooks (myLibrary) {
                 `
             } else if(readOrNot == 'Not Read!'){
                 bookHtml = `
-                            <div class="book-item">
+                            <div class="book-item" data-identifier="${book.dataIdentifier}">
                                 <h2 class="title">${book.title}</h2>
                                 <p class="author">${book.author}</p>
                                 <p class="pageNo">${book.pages}</p>
@@ -128,3 +132,17 @@ function displayBooks (myLibrary) {
 } 
 
 
+function clearTile(e) {
+    if(e.target.textContent == 'Del') {
+        let victimBookTile = e.target.parentNode.parentNode;
+
+        victimBookTile.remove();
+
+        myLibrary.forEach(obj => {
+            if(obj.dataIdentifier == victimBookTile.dataset.identifier) {
+                let vicIndex = myLibrary.indexOf(obj);
+                myLibrary.splice(vicIndex, 1);
+            }
+        })
+    }
+}
