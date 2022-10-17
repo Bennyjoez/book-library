@@ -99,6 +99,7 @@ function displayBooks (myLibrary) {
             <div class="book-item">
                 <h2 class="title">${book.title}</h2>
                 <p class="author">${book.author}</p>
+                <p class="pageNo">${book.pages}</p>
                 <p class="readStatus">${readOrNot}</p>
             </div>
             `
