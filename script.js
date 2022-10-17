@@ -27,7 +27,6 @@ function showOrSubmit(e) {
     if(e.target.textContent === 'NEW BOOK') {
         showForm();
     } else {
-        console.log('add book');
         grabData();
         showForm();
     }
@@ -81,14 +80,12 @@ function createBook (title, author, pages, readStatus) {
     myLibrary.push(newBook);
 
     displayBooks(myLibrary);
-    console.log(title, author, pages, readStatus)
 }
 
 
 function displayBooks (myLibrary) {
     if(myLibrary.length >= 1) {
         booksDisplay.innerHTML = ''
-        console.log(myLibrary);
         myLibrary.forEach(book => {
             let readOrNot;
             if(book.readStatus) {
