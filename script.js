@@ -70,8 +70,8 @@ function grabData() {
             btn.checked = false
         })
     } else {
-        console.log('error');
-    }
+        alert('Please, fill out all fields including answering the question asked by selecting an option.');
+    } 
 
 }
 
