@@ -95,14 +95,33 @@ function displayBooks (myLibrary) {
             } else {
                 readOrNot = 'Not Read!'
             }
-            const bookHtml = `
-            <div class="book-item">
-                <h2 class="title">${book.title}</h2>
-                <p class="author">${book.author}</p>
-                <p class="pageNo">${book.pages}</p>
-                <p class="readStatus">${readOrNot}</p>
-            </div>
-            `
+            let bookHtml; 
+            
+            if (readOrNot == 'Already Read') {
+                bookHtml = `
+                <div class="book-item">
+                    <h2 class="title">${book.title}</h2>
+                    <p class="author">${book.author}</p>
+                    <p class="pageNo">${book.pages}</p>
+                    <div class="readStatus">
+                        ${readOrNot};
+                    </div>
+                </div>
+                `
+            } else {
+                bookHtml = `
+                            <div class="book-item">
+                                <h2 class="title">${book.title}</h2>
+                                <p class="author">${book.author}</p>
+                                <p class="pageNo">${book.pages}</p>
+                                <div class="readStatus">
+                                    ${readOrNot}
+                                    <input type="checkbox" class="finished">
+                                </div>
+                            </div>
+                            `
+            }
+            
             booksDisplay.innerHTML += bookHtml;
         });
     }

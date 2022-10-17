@@ -90,3 +90,8 @@ fieldset *:not(fieldset *:first-child){
 .display {
     display: block;
 } 
+
+.readStatus {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
