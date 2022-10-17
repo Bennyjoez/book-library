@@ -104,3 +104,12 @@ fieldset *:not(fieldset *:first-child){
     padding: 4px;
     width: 100px;
 }
+
+#pages:valid, #author:valid, #title:valid {
+    background-color: rgba(47, 171, 10, 0.6);
+}
+#pages:invalid {
+    background-color: rgb(242, 133, 133);
+    border: 2px solid brown;
+    outline: none;
+}
