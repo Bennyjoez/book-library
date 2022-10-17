@@ -4,8 +4,8 @@ const addBooksBtn = document.querySelector('.addbook');
 const form = document.querySelector('.form');
 
 
-addBooksBtn.addEventListener('click', showForm);
-form.addEventListener('change', grabData)
+addBooksBtn.addEventListener('click', showOrSubmit);
+// form.addEventListener('change', grabData)
 
 function Book (title, author, pages, readStatus) {
     this.title = title;
@@ -22,6 +22,18 @@ function Book (title, author, pages, readStatus) {
         }
     }
 }
+
+function showOrSubmit(e) {
+    if(e.target.textContent === 'NEW BOOK') {
+        console.log('new book');
+        showForm();
+    } else {
+        console.log('add book');
+        grabData();
+        showForm();
+    }
+}
+
 function showForm() {
     form.classList.toggle('display'); 
     if(addBooksBtn.textContent == 'NEW BOOK') {
@@ -47,7 +59,7 @@ function grabData() {
             }
         }
     })
-    console.log(typeof readStatus);
+
     if(bookTitle != '' && author != '' && pages != null && pages != '' && typeof readStatus === 'boolean') {
         createBook(bookTitle, author, pages, readStatus);
         document.querySelector('#title').value = '';
@@ -98,6 +110,3 @@ function displayBooks (myLibrary) {
 } 
 
 
-// createBook('Ben codes', 'Ben', 40, true)
-// createBook('Dorothy meets Ben', 'Ben', 20, false)
-// createBook('Dday', 'Dorothy', 30, true)
