@@ -94,4 +94,14 @@ fieldset *:not(fieldset *:first-child){
 .readStatus {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 3px;
+}
+
+.delete {
+    background-color: brown;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    width: 100px;
+
 }

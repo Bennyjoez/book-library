@@ -106,6 +106,7 @@ function displayBooks (myLibrary) {
                     <p class="pageNo">${book.pages}</p>
                     <div class="readStatus">
                         ${readOrNot};
+                        <button class="delete">Del</button>
                     </div>
                 </div>
                 `
@@ -117,6 +118,7 @@ function displayBooks (myLibrary) {
                                 <p class="pageNo">${book.pages}</p>
                                 <div class="readStatus">
                                     ${readOrNot}
+                                    <button class="delete">Del</button>
                                     <input type="checkbox" class="finished">
                                 </div>
                             </div>
