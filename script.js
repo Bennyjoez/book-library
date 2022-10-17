@@ -40,16 +40,22 @@ function grabData() {
 
     radioBtns.forEach(btn => {
         if(btn.checked) {
-            readStatus = btn.value;
+            if(btn.value == 'Yes') {
+                readStatus = true;
+            } else {
+                readStatus = false
+            }
         }
     })
-
+    console.log(typeof readStatus);
     if(bookTitle != '' && author != '' && pages != null && pages != '' && typeof readStatus === 'boolean') {
         createBook(bookTitle, author, pages, readStatus);
         document.querySelector('#title').value = '';
         document.querySelector('#author').value = '';
         document.querySelector('#pages').value = '';
-
+        radioBtns.forEach(btn => {
+            btn.checked = false
+        })
     } else {
         console.log('error');
     }
