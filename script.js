@@ -2,6 +2,7 @@ let myLibrary = [];
 const booksDisplay = document.querySelector('.books');
 const addBooksBtn = document.querySelector('.addbook');
 const form = document.querySelector('.form');
+const finishedReading = document.querySelector('.finished');
 
 
 addBooksBtn.addEventListener('click', showOrSubmit);
@@ -97,7 +98,7 @@ function displayBooks (myLibrary) {
             }
             let bookHtml; 
             
-            if (readOrNot == 'Already Read') {
+            if (readOrNot == 'Already read') {
                 bookHtml = `
                 <div class="book-item">
                     <h2 class="title">${book.title}</h2>
@@ -108,7 +109,7 @@ function displayBooks (myLibrary) {
                     </div>
                 </div>
                 `
-            } else {
+            } else if(readOrNot == 'Not Read'){
                 bookHtml = `
                             <div class="book-item">
                                 <h2 class="title">${book.title}</h2>
