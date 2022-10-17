@@ -105,7 +105,7 @@ function displayBooks (myLibrary) {
                     <p class="author">${book.author}</p>
                     <p class="pageNo">${book.pages}</p>
                     <div class="readStatus">
-                        ${readOrNot};
+                        ${readOrNot}
                         <button class="delete">Del</button>
                     </div>
                 </div>

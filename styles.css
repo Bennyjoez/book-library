@@ -103,5 +103,4 @@ fieldset *:not(fieldset *:first-child){
     border-radius: 5px;
     padding: 4px;
     width: 100px;
-
 }
