@@ -5,7 +5,6 @@ const form = document.querySelector('.form');
 
 
 addBooksBtn.addEventListener('click', showOrSubmit);
-// form.addEventListener('change', grabData)
 
 function Book (title, author, pages, readStatus) {
     this.title = title;
