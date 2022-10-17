@@ -2,10 +2,9 @@ let myLibrary = [];
 const booksDisplay = document.querySelector('.books');
 const addBooksBtn = document.querySelector('.addbook');
 const form = document.querySelector('.form');
-const finishedReading = document.querySelector('.finished');
+
 
 booksDisplay.addEventListener('click', clearTile);
-
 addBooksBtn.addEventListener('click', showOrSubmit);
 
 function Book (title, author, pages, readStatus, dataIdentifier) {
@@ -106,7 +105,7 @@ function displayBooks (myLibrary) {
                     <p class="author">${book.author}</p>
                     <p class="pageNo">${book.pages}</p>
                     <div class="readStatus">
-                        ${readOrNot}
+                        <span>${readOrNot}</span>
                     </div>
                     <div><button class="delete">Del</button></div>
                 </div>
@@ -118,7 +117,7 @@ function displayBooks (myLibrary) {
                                 <p class="author">${book.author}</p>
                                 <p class="pageNo">${book.pages}</p>
                                 <div class="readStatus">
-                                    ${readOrNot}
+                                    <span>${readOrNot}</span>
                                     <input type="checkbox" class="finished">
                                 </div>
                                 <div><button class="delete">Del</button></div>
@@ -144,5 +143,8 @@ function clearTile(e) {
                 myLibrary.splice(vicIndex, 1);
             }
         })
+    } else if(e.target.className === 'finished') {
+        e.target.previousElementSibling.textContent = 'Already read';
+        e.target.remove();
     }
 }
