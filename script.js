@@ -24,7 +24,6 @@ function Book (title, author, pages, readStatus) {
 
 function showOrSubmit(e) {
     if(e.target.textContent === 'NEW BOOK') {
-        console.log('new book');
         showForm();
     } else {
         console.log('add book');
