@@ -31,19 +31,24 @@ function showForm() {
     }
 }
 
-function grabData(e) {
+function grabData() {
     const bookTitle = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
-    const readStatus = document.querySelector('#yes').checked;
+    const radioBtns = document.querySelectorAll('input[type="radio"]');
+    let readStatus = '';
+
+    radioBtns.forEach(btn => {
+        if(btn.checked) {
+            readStatus = btn.value;
+        }
+    })
 
     if(bookTitle != '' && author != '' && pages != null && pages != '' && typeof readStatus === 'boolean') {
         createBook(bookTitle, author, pages, readStatus);
         document.querySelector('#title').value = '';
         document.querySelector('#author').value = '';
         document.querySelector('#pages').value = '';
-        document.querySelector('#yes').checked = false;
-        document.querySelector('#no').checked
 
     } else {
         console.log('error');
