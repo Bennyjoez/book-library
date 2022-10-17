@@ -22,38 +22,6 @@ function Book (title, author, pages, readStatus) {
         }
     }
 }
-
-function createBook (title, author, pages, readStatus) {
-    if(isNaN(pages)) {
-        alert('The pages should be a number');
-    } 
-    const newBook = new Book(title, author, pages, readStatus);
-    myLibrary.push(newBook);
-    displayBooks(myLibrary);
-    console.log(title, author, pages, readStatus)
-}
-
-
-function displayBooks (myLibrary) {
-    console.log(myLibrary);
-    myLibrary.forEach(book => {
-        let readOrNot;
-        if(book.readStatus) {
-            readOrNot = 'Already read';
-        } else {
-            readOrNot = 'Not Read!'
-        }
-        const bookHtml = `
-        <div class="book-item">
-            <h2 class="title">${book.title}</h2>
-            <p class="author">${book.author}</p>
-            <p class="readStatus">${readOrNot}</p>
-        </div>
-        `
-        booksDisplay.innerHTML += bookHtml;
-    });
-} 
-
 function showForm() {
     form.classList.toggle('display'); 
     if(addBooksBtn.textContent == 'NEW BOOK') {
@@ -68,15 +36,56 @@ function grabData(e) {
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
     const readStatus = document.querySelector('#yes').checked;
-    console.log(readStatus);
 
-    if(bookTitle != '' || author != '' || pages != null || pages != '' || readStatus == true || readStatus == false) {
+    if(bookTitle != '' && author != '' && pages != null && pages != '' && typeof readStatus === 'boolean') {
         createBook(bookTitle, author, pages, readStatus);
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+        document.querySelector('#pages').value = '';
+        document.querySelector('#yes').checked = false;
+        document.querySelector('#no').checked
+
     } else {
         console.log('error');
     }
 
 }
+
+function createBook (title, author, pages, readStatus) {
+    if(isNaN(pages)) {
+        alert('The pages should be a number');
+    } 
+    const newBook = new Book(title, author, pages, readStatus);
+    myLibrary.push(newBook);
+
+    displayBooks(myLibrary);
+    console.log(title, author, pages, readStatus)
+}
+
+
+function displayBooks (myLibrary) {
+    if(myLibrary.length >= 1) {
+        booksDisplay.innerHTML = ''
+        console.log(myLibrary);
+        myLibrary.forEach(book => {
+            let readOrNot;
+            if(book.readStatus) {
+                readOrNot = 'Already read';
+            } else {
+                readOrNot = 'Not Read!'
+            }
+            const bookHtml = `
+            <div class="book-item">
+                <h2 class="title">${book.title}</h2>
+                <p class="author">${book.author}</p>
+                <p class="readStatus">${readOrNot}</p>
+            </div>
+            `
+            booksDisplay.innerHTML += bookHtml;
+        });
+    }
+} 
+
 
 // createBook('Ben codes', 'Ben', 40, true)
 // createBook('Dorothy meets Ben', 'Ben', 20, false)
