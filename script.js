@@ -1,152 +1,86 @@
-let myLibrary = [];
-const booksDisplay = document.querySelector('.books');
-const addBooksBtn = document.querySelector('.addbook');
+const books = document.querySelector('.books');
+const button = document.querySelector('.addbook');
+const formElement = document.querySelector('form');
 const form = document.querySelector('.form');
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
+let readOrNot = document.querySelectorAll('[name="readstatus"]');
 
 
-booksDisplay.addEventListener('click', clearTile);
-addBooksBtn.addEventListener('click', showOrSubmit);
+let booksArr = [];
 
-function Book (title, author, pages, readStatus, dataIdentifier) {
-    this.title = title;
-    this.author = author; 
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.dataIdentifier = dataIdentifier;
-    this.info = function () {
-        if(this.readStatus) {
-            return `The book "${this.title}" by ${this.author} is ${this.pages} pages long and you have read it.`
-        } else if (!this.readStatus) {
-            return `The book "${this.title}" by ${this.author} is ${this.pages} pages long and you have not read it.`
-        } else {
-            alert('An error has occurred!!')
-        }
-    }
-}
+button.addEventListener('click', chooseOperation);
+books.addEventListener('click', chooseOperation);
 
-function showOrSubmit(e) {
+function chooseOperation(e) {
     if(e.target.textContent === 'NEW BOOK') {
-        showForm();
-    } else {
-        grabData();
-        showForm();
+        Respond.showForm(e)
+    } else if (e.target.textContent === "ADD BOOK") {
+        Respond.addBook(e)
+    } else if (e.target.textContent === "Del") {
+        UI.removeBook(e)
     }
 }
 
-function showForm() {
-    form.classList.toggle('display'); 
-    if(addBooksBtn.textContent == 'NEW BOOK') {
-        addBooksBtn.textContent = 'ADD BOOK';
-    } else {
-        addBooksBtn.textContent = 'NEW BOOK'
+class Respond {
+    static showForm(e) {
+        form.classList.toggle('display');
+        e.target.textContent = "ADD BOOK";
     }
-}
+    
+    static addBook(e) {
+        let readStatus;
 
-function grabData() {
-    const bookTitle = document.querySelector('#title').value;
-    const author = document.querySelector('#author').value;
-    const pages = document.querySelector('#pages').value;
-    const yesBtn   = document.querySelector('#yes');
-    const noBtn = document.querySelector('#no');
-    const radioBtns = document.querySelectorAll('input[type="radio"]');
-    let readStatus = '';
-
-    radioBtns.forEach(btn => {
-        if(btn.checked) {
-            if(btn.value == 'Yes') {
-                readStatus = true;
-            } else {
-                readStatus = false
-            }
+        if(readOrNot[0].checked) {
+            readStatus = 'Already Read'
+        } else if (readOrNot[1].checked) {
+            readStatus = 'Not Read';
         }
-    })
 
-    if(bookTitle != '' && author != '' && pages != null && pages != '' && typeof readStatus === 'boolean') {
-        createBook(bookTitle, author, pages, readStatus);
-        document.querySelector('#title').value = '';
-        document.querySelector('#author').value = '';
-        document.querySelector('#pages').value = '';
-        radioBtns.forEach(btn => {
-            btn.checked = false
-        })
-    } else {
-        alert('Please, fill out all fields including answering the question asked by selecting an option.');
-    } 
+        const book = new Book(title.value, author.value, pages.value, readStatus);
+        booksArr.push(book);
 
-}
-
-function createBook (title, author, pages, readStatus) {
-    if(isNaN(pages)) {
-        alert('The pages should be a number');
-    } 
-    let length = myLibrary.length;
-    let dataIdentifier = length += 1
-    const newBook = new Book(title, author, pages, readStatus, dataIdentifier);
-    myLibrary.push(newBook);
-
-    displayBooks(myLibrary);
-}
-
-
-function displayBooks (myLibrary) {
-    if(myLibrary.length >= 1) {
-        booksDisplay.innerHTML = ''
-        myLibrary.forEach(book => {
-            let readOrNot;
-            if(book.readStatus) {
-                readOrNot = 'Already read';
-            } else {
-                readOrNot = 'Not Read!'
-            }
-            let bookHtml; 
-            
-            if (readOrNot == 'Already read') {
-                bookHtml = `
-                <div class="book-item" data-identifier="${book.dataIdentifier}">
-                    <h2 class="title">${book.title}</h2>
-                    <p class="author">${book.author}</p>
-                    <p class="pageNo">${book.pages}</p>
-                    <div class="readStatus">
-                        <span>${readOrNot}</span>
-                    </div>
-                    <div><button class="delete">Del</button></div>
-                </div>
-                `
-            } else if(readOrNot == 'Not Read!'){
-                bookHtml = `
-                            <div class="book-item" data-identifier="${book.dataIdentifier}">
-                                <h2 class="title">${book.title}</h2>
-                                <p class="author">${book.author}</p>
-                                <p class="pageNo">${book.pages}</p>
-                                <div class="readStatus">
-                                    <span>${readOrNot}</span>
-                                    <input type="checkbox" class="finished">
-                                </div>
-                                <div><button class="delete">Del</button></div>
-                            </div>
-                            `
-            }
-            
-            booksDisplay.innerHTML += bookHtml;
-        });
+        UI.addElement();
+        e.target.textContent = "NEW BOOK";
+        form.classList.remove('display');
+        formElement.reset();
     }
-} 
+}
 
+class Book {
+    constructor (bookTitle, bookAuthor, pageNumber, readStatus) {
+        this.bookTitle = bookTitle,
+        this.bookAuthor = bookAuthor,
+        this.pageNumber = pageNumber,
+        this.readStatus = readStatus
+    }
 
-function clearTile(e) {
-    if(e.target.textContent == 'Del') {
-        let victimBookTile = e.target.parentNode.parentNode;
+}
 
-        victimBookTile.remove();
-
-        myLibrary.forEach(obj => {
-            if(obj.dataIdentifier == victimBookTile.dataset.identifier) {
-                let vicIndex = myLibrary.indexOf(obj);
-                myLibrary.splice(vicIndex, 1);
-            }
-        })
-    } else if(e.target.className === 'finished') {
-        e.target.previousElementSibling.textContent = 'Already read';
-        e.target.remove();
+class UI {
+    static addElement() { 
+        let elementsArr = booksArr.map(book => {
+            return `
+            <div class="book-item" data-identifier="${book.dataIdentifier}">
+                <h2 class="title">${book.bookTitle}</h2>
+                <p class="author">${book.bookAuthor}</p>
+                <p class="pageNo">${book.pageNumber}</p>
+                <div class="readStatus">
+                    <span>${book.readStatus}</span>
+                </div>
+                <div><button class="delete">Del</button></div>
+            </div>
+            `
+        });
+        books.innerHTML = elementsArr.join(" ");
+    }
+    
+    static removeBook(e) {
+        let targetElement = e.target.parentNode.parentNode;
+        let books = Array.from(targetElement.parentNode.children);
+        let index = books.indexOf(targetElement);
+        targetElement.remove();
+        booksArr.splice(index, 1);
     }
 }

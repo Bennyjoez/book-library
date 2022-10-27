@@ -90,6 +90,9 @@ fieldset *:not(fieldset *:first-child){
 .display {
     display: block;
 } 
+.dontDisplay {
+    display: none;
+}
 
 .readStatus {
     display: grid;
