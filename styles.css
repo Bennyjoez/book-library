@@ -108,6 +108,7 @@ fieldset *:not(fieldset *:first-child){
     border-radius: 5px;
     padding: 4px;
     width: 100px;
+    cursor: pointer;
 }
 
 #pages:valid, #author:valid, #title:valid {
