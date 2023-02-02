@@ -19,14 +19,16 @@ body {
     color: rgb(13, 13, 31);
     text-shadow: 1px 2px 3px gray;
     font-size: calc(0.5rem + 1vw);
+    display: grid;
+    place-items: center;
+    background-color: var(--default-tile-background);
 }
-.titles, .book-item {
+.book-item {
     display: grid;
     grid-template: 1fr / repeat(5, 1fr);
     gap: 20px;
     text-align: center;
     align-items: center;
-    background-color: var(--default-tile-background);
 }
 
 .books {
@@ -112,4 +114,15 @@ fieldset *:not(fieldset *:first-child){
     background-color: rgb(242, 133, 133);
     border: 2px solid brown;
     outline: none;
+}
+
+@media (max-width: 490px) {
+    .book {
+        max-width: 100vw;
+    }
+    .book-item {
+        max-width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -109,20 +109,20 @@ function displayBooks (myLibrary) {
                     <div class="readStatus">
                         <span>${readOrNot}</span>
                     </div>
-                    <div><button class="delete">Del</button></div>
+                    <button class="delete">Del</button>
                 </div>
                 `
             } else if(readOrNot == 'Not Read!'){
                 bookHtml = `
                             <div class="book-item" data-identifier="${book.dataIdentifier}">
-                                <h2 class="title">${book.title}</h2>
-                                <p class="author">${book.author}</p>
-                                <p class="pageNo">${book.pages}</p>
+                                <h2 class="title">Title: ${book.title}</h2>
+                                <p class="author">Author: ${book.author}</p>
+                                <p class="pageNo">${book.pages}pgs</p>
                                 <div class="readStatus">
                                     <span>${readOrNot}</span>
                                     <input type="checkbox" class="finished">
                                 </div>
-                                <div><button class="delete">Del</button></div>
+                                <button class="delete">Del</button>
                             </div>
                             `
             }
