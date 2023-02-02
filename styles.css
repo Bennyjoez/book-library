@@ -29,8 +29,11 @@ body {
     gap: 20px;
     text-align: center;
     align-items: center;
+    background-color: var(--default-tile-background);
 }
-
+.label {
+    font-size: 0.8rem;
+}
 .books {
     width: minmax(600px, 70%);
 }

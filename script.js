@@ -115,8 +115,8 @@ function displayBooks (myLibrary) {
             } else if(readOrNot == 'Not Read!'){
                 bookHtml = `
                             <div class="book-item" data-identifier="${book.dataIdentifier}">
-                                <h2 class="title">Title: ${book.title}</h2>
-                                <p class="author">Author: ${book.author}</p>
+                                <h2 class="title"><span class="label">Title:</span> ${book.title}</h2>
+                                <p class="author"><span class="label">Author:</span> ${book.author}</p>
                                 <p class="pageNo">${book.pages}pgs</p>
                                 <div class="readStatus">
                                     <span>${readOrNot}</span>
