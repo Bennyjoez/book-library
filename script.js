@@ -86,8 +86,9 @@ function createBook (title, author, pages, readStatus) {
 
     localStorage.setItem("books", JSON.stringify(myLibrary));
 
+    // save my library to local storage
     const displayed = localStorage.getItem("books")
-    console.log(displayed)
+
     displayBooks(displayed);
 }
 
@@ -151,6 +152,7 @@ function clearTile(e) {
             }
         })
 
+        // update my library after the changes
         localStorage.setItem("books",JSON.stringify(myLibrary))
 
     } else if(e.target.className === 'finished') {
