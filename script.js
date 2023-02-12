@@ -84,7 +84,11 @@ function createBook (title, author, pages, readStatus) {
     const newBook = new Book(title, author, pages, readStatus, dataIdentifier);
     myLibrary.push(newBook);
 
-    displayBooks(myLibrary);
+    localStorage.setItem("books", JSON.stringify(myLibrary));
+
+    const displayed = localStorage.getItem("books")
+    console.log(displayed)
+    displayBooks(displayed);
 }
 
 
@@ -93,12 +97,13 @@ function displayBooks (myLibrary) {
         booksDisplay.innerHTML = ''
         myLibrary.forEach(book => {
             let readOrNot;
+            let bookHtml;
+            
             if(book.readStatus) {
                 readOrNot = 'Already read';
             } else {
                 readOrNot = 'Not Read!'
             }
-            let bookHtml; 
             
             if (readOrNot == 'Already read') {
                 bookHtml = `
@@ -145,6 +150,9 @@ function clearTile(e) {
                 myLibrary.splice(vicIndex, 1);
             }
         })
+
+        localStorage.setItem("books",JSON.stringify(myLibrary))
+
     } else if(e.target.className === 'finished') {
         e.target.previousElementSibling.textContent = 'Already read';
         e.target.remove();
