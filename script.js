@@ -7,6 +7,8 @@ const form = document.querySelector('.form');
 booksDisplay.addEventListener('click', clearTile);
 addBooksBtn.addEventListener('click', showOrSubmit);
 
+
+// call display page on page load
 window.onload(start());
 
 async function start () {
@@ -99,11 +101,10 @@ function createBook (title, author, pages, readStatus) {
 }
 
 
-function displayBooks (data) {
-    if(data.length >= 1) {
+function displayBooks (myLibrary) {
+    if(myLibrary.length >= 1) {
         booksDisplay.innerHTML = ''
-
-        data.map(book => {
+        myLibrary.forEach(book => {
             let readOrNot;
             let bookHtml;
             
