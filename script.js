@@ -46,8 +46,6 @@ function grabData() {
     const bookTitle = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
-    const yesBtn   = document.querySelector('#yes');
-    const noBtn = document.querySelector('#no');
     const radioBtns = document.querySelectorAll('input[type="radio"]');
     let readStatus = '';
 
