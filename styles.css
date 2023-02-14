@@ -1,132 +1,143 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --default-tile-background: hsla(355, 93%, 50%, 0.2);
+  --default-tile-background: hsla(355, 93%, 50%, 0.2);
 }
 
 body {
-    background: linear-gradient(45deg, purple, pink);
-    width: 100vw;
-    min-height: 100vh;
-    text-align: center;
+  background: linear-gradient(45deg, purple, pink);
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
 }
+
 .titles {
-    margin-bottom: 30px;
-    color: rgb(13, 13, 31);
-    text-shadow: 1px 2px 3px gray;
-    font-size: calc(0.5rem + 1vw);
-    display: grid;
-    place-items: center;
-    background-color: var(--default-tile-background);
+  margin-bottom: 30px;
+  color: rgb(13, 13, 31);
+  text-shadow: 1px 2px 3px gray;
+  font-size: calc(0.5rem + 1vw);
+  display: grid;
+  place-items: center;
+  background-color: var(--default-tile-background);
 }
+
 .book-item {
-    display: grid;
-    grid-template: 1fr / repeat(5, 1fr);
-    gap: 20px;
-    text-align: center;
-    align-items: center;
-    background-color: var(--default-tile-background);
+  display: grid;
+  grid-template: 1fr / repeat(5, 1fr);
+  gap: 20px;
+  text-align: center;
+  align-items: center;
+  background-color: var(--default-tile-background);
+  width: minmax(500px, 700px);
+  padding: 20px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
 }
+
 .label {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
+
 .books {
-    width: minmax(600px, 70%);
+  width: minmax(600px, 70%);
 }
-.book-item {
-    width: minmax(500px, 700px);
-    padding: 20px;
-    margin-bottom: 10px;
-    text-transform: capitalize;
-}
+
 .book-item h1 {
-    font-size: calc(0.4rem + 1vw);
+  font-size: calc(0.4rem + 1vw);
 }
 
 .button .addbook {
-    color: black;
-    padding: 10px;
-    font-weight: bold;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(23, 168, 226);
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(23, 168, 226);
 }
 
 .button .addbook:hover {
-    cursor: pointer;
-    padding: 12px;
-    box-shadow: 0 0 3px 2px brown;
+  cursor: pointer;
+  padding: 12px;
+  box-shadow: 0 0 3px 2px brown;
 }
 
 .form {
-    width: 60%;
-    max-width: 500px;
-    margin: 20px auto;
-    display: none;
+  width: 60%;
+  max-width: 500px;
+  margin: 20px auto;
+  display: none;
 }
+
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
 form * {
-    margin-bottom: 10px;
-    width: 100%;
-    font-weight: bold;
+  margin-bottom: 10px;
+  width: 100%;
+  font-weight: bold;
 }
+
 form input:not(input[type='radio']) {
-    border: none;
-    height: 25px;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: inset 5px 1px gray;
-    padding-left: 10px;
-    font-weight: normal;
-    font-size: 1rem;
+  border: none;
+  height: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: inset 5px 1px gray;
+  padding-left: 10px;
+  font-weight: normal;
+  font-size: 1rem;
 }
-fieldset *:not(fieldset *:first-child){
-    width: 25%;
+
+fieldset *:not(fieldset *:first-child) {
+  width: 25%;
 }
 
 /* display form */
 .display {
-    display: block;
-} 
+  display: block;
+}
 
 .readStatus {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 3px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 3px;
 }
 
 .delete {
-    background-color: brown;
-    border: none;
-    border-radius: 5px;
-    padding: 4px;
-    width: 100px;
-    cursor: pointer;
+  background-color: brown;
+  border: none;
+  border-radius: 5px;
+  padding: 4px;
+  width: 100px;
+  cursor: pointer;
 }
 
-#pages:valid, #author:valid, #title:valid {
-    background-color: rgba(47, 171, 10, 0.6);
+#pages:valid,
+#author:valid,
+#title:valid {
+  background-color: rgba(47, 171, 10, 0.6);
 }
+
 #pages:invalid {
-    background-color: rgb(242, 133, 133);
-    border: 2px solid brown;
-    outline: none;
+  background-color: rgb(242, 133, 133);
+  border: 2px solid brown;
+  outline: none;
 }
 
 @media (max-width: 490px) {
-    .book {
-        max-width: 100vw;
-    }
-    .book-item {
-        max-width: 100vw;
-        display: flex;
-        flex-direction: column;
-    }
+  .book {
+    max-width: 100vw;
+  }
+
+  .book-item {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
 }
