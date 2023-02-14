@@ -1,0 +1,27 @@
+{
+  "name": "book-library",
+  "version": "1.0.0",
+  "description": "This is an app created in line with the odin project tutorial phase.  ### Use To use the app:   - click om new book button,   - fill the required input fields with information such as: the books title, the authpr, the number of pages and whether you have read the book or not.   - click on add book button to submit your entry.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bennyjoez/book-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bennyjoez/book-library/issues"
+  },
+  "homepage": "https://github.com/Bennyjoez/book-library#readme",
+  "devDependencies": {
+    "hint": "^7.1.3",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0"
+  }
+}
